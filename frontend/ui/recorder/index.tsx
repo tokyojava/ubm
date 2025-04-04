@@ -5,7 +5,7 @@ import {RecordTestEntry} from "./entry";
 
 export function RecorderTest() {
     return (
-        <BrowserRouter basename={'/recorder.html'}>
+        <BrowserRouter>
             <RecordTestEntry/>
         </BrowserRouter>
     )

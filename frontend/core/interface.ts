@@ -140,6 +140,8 @@ export interface UBMPageResult {
 }
 
 export interface RootEmitMetaInfo {
+    // the timestamp recorded for all events are relative values
+    // and this value serves as the base
     baseTimestamp: number;
 }
 

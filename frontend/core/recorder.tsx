@@ -19,19 +19,29 @@ import _throttle from 'lodash/throttle';
 const {slice} = Array.prototype;
 
 export interface RequiredOptions {
+    // triggered when the snapshot is taken on page load
     onRootEmitted: (root: SnapshotNode, metaInfo: RootEmitMetaInfo) => Promise<void>;
+    // the events are sent like streams
     onRecordItemsEmitted: (recordItems: RecordItem[]) => void;
+    // when the recorder is stopped
     onStopped: () => void;
 }
 
 const defaultOptions = {
+    // at most every 100 ms report a scroll event
     scrollThrottle: 100,
+    // at most every 100 ms report a mousemove event
     mousemoveThrottle: 100,
+    // the new changes are stashed in local and once 'bufferSize' of events 
+    // are accumulated, the data is flushed by triggering onRecordItemsEmitted
     bufferSize: 100,
-    maxEmitSize: 500,
+    // Let's say 130 events are stashed locally, then 3 emits will be triggered
+    // 50,50 and 30
+    maxEmitSize: 50,
     debugMode: false,
 };
 
+// advanced usage of some lifecyle methods
 export interface LifeCycleMonitors {
     beforeRecordHandle?: (record: MutationRecord) => any;
     onHandleRecord?: (record: MutationRecord, items: RecordItem[]) => any;
@@ -473,8 +483,10 @@ export default class UserBehaviorRecorder {
 
     record() {
         this.restore();
+        // take the snapshot for the first time
         this.takeSnapshot()
         this.registerEvents();
+        // where the true magic happens
         this.observeMutations();
         this.options.onRootEmitted(this.root!, {baseTimestamp: this.baseTimestamp})
             .then(() => {

@@ -52,10 +52,10 @@ export function insertAfter(newNode: Node, targetNode: Node) {
     }
 }
 
-export function normalizePercentage(nominator: number, denominator: number){
+export function normalizePercentage(numerator: number, denominator: number){
     if(denominator === 0){
         return 0;
     }
-    return +Number(nominator / denominator * 100)
+    return +Number(numerator / denominator * 100)
         .toFixed(2);
 }

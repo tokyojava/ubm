@@ -3,8 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        recorder: './recorder-test/index.tsx',
-        player: './player-test.tsx',
+        recorder: './frontend/ui/recorder/index.tsx',
+        player: './frontend/ui/player/index.tsx',
     },
     resolve: {
         extensions: ['.js', '.ts', '.tsx'],
@@ -19,16 +19,7 @@ module.exports = {
                         "react-app"
                     ],
                     plugins: [
-                        [
-                            "import",
-                            {
-                                "libraryName": "antd",
-                                "libraryDirectory": "es",
-                                "transformToDefaultImport": true,
-                                "camel2DashComponentName": true,
-                                "style": true
-                            }
-                        ]
+                       
                     ],
                 },
             },
@@ -84,7 +75,7 @@ module.exports = {
             title: 'recorder',
             chunks: ['runtime', 'vendors', 'recorder'],
             template: path.resolve(__dirname, 'index.html'),
-            filename: 'recorder.html',
+            filename: 'index.html',
             inject: true,
         }),
     ]

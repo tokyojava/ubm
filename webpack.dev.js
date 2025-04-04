@@ -6,7 +6,10 @@ module.exports = merge(base, {
         port: 3111,
         hot: true,
         proxy: {},
-        open: ['/recorder.html', '/player.html'],
+        proxy: {},
+        historyApiFallback: true,
+        open: ['/', '/player.html'],
+        
         // Use 'ws' instead of 'sockjs-node' on server since we're using native
         // websockets in `webpackHotDevClient`.
         // transportMode: 'ws',

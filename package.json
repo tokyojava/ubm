@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "server": "ts-node server/ubm-sample-server.ts",
-    "dev": "NODE_ENV=development webpack-dev-server --config webpack.dev.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js",
     "build": "rm -rf lib && tsc"
   },
   "author": "sakopqiu@gmail.com",
@@ -21,7 +21,7 @@
     "@types/koa__cors": "^3.1.1",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.12",
-    "antd": "^4.18.9",
+    "antd": "^5.24.6",
     "babel-loader": "^8.2.3",
     "babel-plugin-import": "^1.13.3",
     "babel-preset-react-app": "^10.0.1",
@@ -50,6 +50,7 @@
     "@types/lodash": "^4.14.179",
     "@types/react-router-dom": "5",
     "classnames": "^2.3.1",
+    "cross-env": "^7.0.3",
     "koa-cors": "^0.0.16",
     "lodash": "^4.17.21",
     "mobx": "^6.4.2",

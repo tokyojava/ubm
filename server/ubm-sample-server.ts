@@ -12,7 +12,7 @@ import fs, {
     rmdir as fsRmdir,
 } from "fs";
 import {promisify} from "util";
-import {ATTR_MAP, RecordItem} from "../components/interface";
+import {ATTR_MAP, RecordItem} from "../frontend/core/interface";
 
 const mkdir = promisify(fsMkdir);
 const exists = promisify(fsExists);
@@ -128,6 +128,11 @@ router.get('/:sessionId', async (ctx) => {
                     });
                 });
         })));
+        recordFileContents.sort((o1, o2)=>{
+            const n1 = Number(o1.fileName.slice(o1.fileName.lastIndexOf(path.sep) + 1, o1.fileName.indexOf('.') - 1));
+            const n2 = Number(o1.fileName.slice(o2.fileName.lastIndexOf(path.sep) + 1, o2.fileName.indexOf('.') - 1));
+            return n1 - n2;
+        });
 
         const recordItemsJsons: RecordItem[][] = [];
         for (const {fileName, buffer} of recordFileContents) {
@@ -142,6 +147,7 @@ router.get('/:sessionId', async (ctx) => {
 
         let lostNumber = 0;
         let previousRoundLastRecord: RecordItem | null = null;
+    
         for (const items of recordItemsJsons) {
             if (previousRoundLastRecord) {
                 // non-consecutive record detected

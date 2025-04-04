@@ -1,6 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import style from "./page1.module.scss";
-import {recorder} from "./common";
+import { recorder } from "./common";
+import SimpleTable from "./SimpleTable";
+import { Tooltip } from "antd";
+import SimpleForm from "./SimpleForm";
 
 export function Page1() {
     const [input, setInput] = useState('');
@@ -8,34 +11,36 @@ export function Page1() {
 
     return (
         <div>
-            <div style={{marginBottom: 10}}>
+            <div style={{ marginBottom: 10 }}>
                 <input
                     value={input}
                     onChange={(e) => {
                         setInput(e.target.value);
                     }}
                 />
-                <button
-                    className='submit'
-                    style={{marginLeft: 10, marginRight: 10}}
-                    onClick={() => {
-                        recorder.addCustomRecordItem({
-                            semantic: 'Submit',
-                            description: 'User clicks submit',
-                        })
-                        const v = input.trim();
-                        if (v.length > 0) {
-                            setRecords((old) => [
-                                ...old,
-                                {
-                                    value: v,
-                                },
-                            ]);
-                        }
-                    }}
-                >
-                    submit
-                </button>
+                <Tooltip title="add a new row">
+                    <button
+                        className='submit'
+                        style={{ marginLeft: 10, marginRight: 10 }}
+                        onClick={() => {
+                            recorder.addCustomRecordItem({
+                                semantic: 'Submit',
+                                description: 'User clicks submit',
+                            })
+                            const v = input.trim();
+                            if (v.length > 0) {
+                                setRecords((old) => [
+                                    ...old,
+                                    {
+                                        value: v,
+                                    },
+                                ]);
+                            }
+                        }}
+                    >
+                        submit
+                    </button>
+                </Tooltip>
                 <button id='clear' onClick={() => {
                     setRecords([]);
                 }}
@@ -79,22 +84,32 @@ export function Page1() {
                     </>
                 )}
             </div>
-            <div style={{
-                background: '#59eb12',
-                overflow: 'auto',
-                height: 200,
-                width: 200,
-                marginTop: 10,
-            }}
-            >
+            <div style={{ display: 'flex', justifyContent: 'stretch' }}>
                 <div style={{
-                    width: 1000,
-                    height: 1000,
-                    color: 'white',
-                }}
-                >
-                    Test scrolling
+                    marginTop: 10,
+                    marginRight: 50
+                }}>
+                    <div style={{
+                        background: '#59eb12',
+                        overflow: 'auto',
+                        height: 200,
+                        width: 200,
+                    }}
+                    >
+                        <div style={{
+                            width: 1000,
+                            height: 1000,
+                            color: 'white',
+                        }}
+                        >
+                            Test scrolling
+                        </div>
+                    </div>
+                    <SimpleTable />
                 </div>
+
+
+                <SimpleForm />
             </div>
         </div>
     );

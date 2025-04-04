@@ -1,10 +1,11 @@
-import React, {useEffect, useState, useRef} from 'react';
-import UserBehaviorRecorder from '../components/recorder';
-import {RecordItem} from '../components/interface';
-import {Link, Route, Switch} from "react-router-dom";
-import {Page1} from "./page1";
-import {recorder} from "./common";
-import {Page2} from "./page2";
+import React, { useEffect, useState, useRef } from 'react';
+
+import { Link, Redirect, Route, Switch } from "react-router-dom";
+import { Page1 } from "./page1";
+import { recorder } from "./common";
+import { Page2 } from "./page2";
+import UserBehaviorRecorder from '../../core/recorder';
+import { RecordItem } from '../../core/interface';
 
 export function RecordTestEntry() {
     const [domain, setDomain] = useState('http://localhost:3112')
@@ -61,19 +62,19 @@ export function RecordTestEntry() {
     }, [domain, sessionId]);
 
     return (
-        <div style={{padding: 15}}>
+        <div style={{ padding: 15 }}>
             <div>
-                Server Domain: <input value={domain} onChange={(e) => setDomain(e.target.value)}/>
+                Server Domain: <input value={domain} onChange={(e) => setDomain(e.target.value)} />
             </div>
-            <div style={{marginTop: 10, marginBottom: 50}}>
-                SessionId: <input value={sessionId} onChange={(e) => setSessionId(e.target.value)}/>
+            <div style={{ marginTop: 10, marginBottom: 50 }}>
+                SessionId: <input value={sessionId} onChange={(e) => setSessionId(e.target.value)} />
                 <button
                     disabled={started}
                     onClick={() => {
                         setStarted(true);
                         setShowPlayerHint(false);
                         recorderRef.current?.record();
-                    }} style={{marginLeft: 10, marginRight: 10}}
+                    }} style={{ marginLeft: 10, marginRight: 10 }}
                 >
                     start
                 </button>
@@ -89,17 +90,17 @@ export function RecordTestEntry() {
                 </button>
             </div>
             <div>
-                <Link to='/' style={{marginRight: 8}}>Page1</Link>
+                <Link to='/' style={{ marginRight: 8 }}>Page1</Link>
                 <Link to='/page2'>Page2</Link>
             </div>
             <Switch>
-                <Route path={'/'} exact component={Page1}/>
-                <Route path={'/page2'} exact component={Page2}/>
+                <Route path={'/'} exact component={Page1} />
+                <Route path={'/page2'} exact component={Page2} />
             </Switch>
 
             {started && <div>Recoding session {sessionId}....... press Stop Button to stop recording</div>}
             {showPlayerHint && <div>Replay your record <a target='__blank'
-                                                          href={`http://localhost:3111/player.html?sessionId=${sessionId}&domain=${domain}`}>here</a>
+                href={`http://localhost:3111/player.html?sessionId=${sessionId}&domain=${domain}`}>here</a>
             </div>}
         </div>
     )
