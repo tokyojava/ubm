@@ -16,11 +16,9 @@ This Repo is composed of 4 parts:
 Note that the `recorder`,`naive api` and `player` components in this repo are just for demo/reference during development, you need to check the [How it works](#hiw) below to see how you should send data back to your own server.
 
 # Demo
-Be sure to check out the demo
-[![Demo]([https://share.gifyoutube.com/KzB6Gb.gif](https://github.com/user-attachments/assets/da84c78d-3011-4c25-bdd6-f968f1106560
-))]([https://www.youtube.com/watch?v=ek1j272iAmc](https://github.com/user-attachments/assets/da84c78d-3011-4c25-bdd6-f968f1106560
-))
+Be sure to check out the demo, the page is recorded first and then played just like a "video".
 
+https://github.com/user-attachments/assets/da84c78d-3011-4c25-bdd6-f968f1106560
 
 
 # How to test it out in localhost?
