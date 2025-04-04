@@ -17,7 +17,11 @@ Note that the `recorder`,`naive api` and `player` components in this repo are ju
 
 # Demo
 Be sure to check out the demo
-[![](https://vimeo.com/1072584589/0c46032a97?ts=0&share=copy)](https://vimeo.com/1072584589/0c46032a97?ts=0&share=copy)
+[![Demo]([https://share.gifyoutube.com/KzB6Gb.gif](https://github.com/user-attachments/assets/da84c78d-3011-4c25-bdd6-f968f1106560
+))]([https://www.youtube.com/watch?v=ek1j272iAmc](https://github.com/user-attachments/assets/da84c78d-3011-4c25-bdd6-f968f1106560
+))
+
+
 
 # How to test it out in localhost?
 - Install dependencies `yarn` 
