@@ -1,0 +1,77 @@
+.player {
+  margin: 0 auto;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  border: 1px solid #16e8ed;
+
+  .collapse{
+    position: absolute;
+    bottom: 72px;
+    left: 8px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: transform 0.5s;
+    &.reverse{
+      transform: rotate(180deg);
+    }
+  }
+
+  .time {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: red;
+    z-index: 999999;
+  }
+
+  .loading {
+    position: fixed;
+    z-index: 999;
+    top: 40%;
+    left: 50%;
+    transform: translateY(-50%) translateY(-50%);
+  }
+
+  .viewport {
+    height: 100%;
+    width: 100%;
+  }
+
+  .tool {
+    position: absolute;
+    background: transparent;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 3px solid #16e8ed;
+    box-sizing: border-box;
+    height: 60px;
+    display: flex;
+    padding: 6px 16px;
+    align-items: center;
+    justify-content: space-between;
+    transition: bottom 0.5s;
+
+    &.collapsed{
+      bottom: -60px;
+    }
+
+    .left {
+      display: flex;
+      font-weight: bold;
+      align-items: center;
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.highlight-list{
+  :global(.ant-list-item-meta-description){
+    overflow-wrap: break-word;
+  }
+}

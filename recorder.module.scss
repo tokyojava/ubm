@@ -1,0 +1,9 @@
+.color {
+  margin-bottom: 10px;
+  color: blue;
+  border: 1px solid red;
+
+  &.red {
+    color: red;
+  }
+}

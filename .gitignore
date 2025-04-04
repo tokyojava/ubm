@@ -1,0 +1,6 @@
+node_modules
+
+server/chunks
+.idea
+lib
+*.log

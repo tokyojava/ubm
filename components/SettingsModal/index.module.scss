@@ -1,0 +1,22 @@
+.item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .fixed {
+    position: absolute;
+    font-size: 12px;
+    left: 42px;
+    z-index: 9;
+    font-weight: bold;
+  }
+
+  input {
+    padding-left: 38px;
+  }
+
+  span {
+    margin-right: 8px;
+  }
+}
