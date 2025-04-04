@@ -5,7 +5,7 @@ Later, the "player" can simply load json data and can replay what happened.
 
 It is similar to [rrweb](https://www.rrweb.io/) and [hotjar](https://www.hotjar.com/)
 
-It might not be that omnipotent but still allows you to track user's real behavior in a very granular way, compared to normal Tracking libraries which only send aggregated user behaviors as trackign events.
+It might not be that omnipotent but still allows you to track user's real behavior in a very granular way, compared to normal Tracking libraries which only send aggregated user behaviors as tracking events.
 
 This Repo is composed of 4 parts:
 - The Typescript lib itself, which is in the `frontend/core` folder,
